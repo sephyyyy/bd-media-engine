@@ -37,6 +37,7 @@ const testimonials = [
 ];
 
 const Index = () => {
+  const { open: openContactModal } = useContactModal();
   return (
     <div>
       {/* Hero */}
