@@ -6,10 +6,9 @@ const Footer = () => (
     <div className="mx-auto max-w-7xl">
       <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
         <div>
-          <Link to="/" className="text-[22px] font-extrabold tracking-tight">
-            BD<span className="text-primary">·</span>MEDIA
+          <Link to="/">
+            <img src={logoImg} alt="BD Media" className="h-7 w-auto" />
           </Link>
-          <p className="mt-2 text-sm text-muted-foreground">Growth Partner</p>
         </div>
 
         <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
