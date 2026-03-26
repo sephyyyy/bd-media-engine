@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logoImg from "@/assets/logo_bd_media.png";
+
 
 const navLinks = [
   { label: "Cosa Facciamo", to: "/services" },
