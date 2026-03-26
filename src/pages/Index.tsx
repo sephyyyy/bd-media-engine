@@ -1,6 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import MarqueeStrip from "@/components/MarqueeStrip";
-import { Link } from "react-router-dom";
+import { useContactModal } from "@/components/ContactModalContext";
 
 const stats = [
   { value: "2K+", label: "Lead qualificati generati in meno di 12 mesi di attività" },
