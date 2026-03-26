@@ -1,5 +1,5 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import { Link } from "react-router-dom";
+import { useContactModal } from "@/components/ContactModalContext";
 
 const services = [
   { num: "01", name: "Multiplatform ADS", desc: "Campagne pubblicitarie su Meta (Facebook & Instagram), Google, TikTok e LinkedIn. Costruiamo funnel completi dalla awareness alla conversione, ottimizzati settimana per settimana sui dati reali — non sulle intuizioni.", tags: ["Meta Ads", "Google Ads", "TikTok Ads", "LinkedIn Ads", "Funnel Strategy"] },
