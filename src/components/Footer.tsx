@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import logoImg from "@/assets/logo_bd_media.png";
 
 const Footer = () => (
   <footer className="border-t border-white/[0.06] bg-background px-6 py-16 md:px-12 lg:px-20">
     <div className="mx-auto max-w-7xl">
       <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
         <div>
-          <Link to="/">
-            <img src={logoImg} alt="BD Media" className="h-7 w-auto" />
+          <Link to="/" className="text-[22px] font-extrabold tracking-tight">
+            BD<span className="text-primary">·</span>MEDIA
           </Link>
+          <p className="mt-2 text-sm text-muted-foreground">Growth Partner</p>
         </div>
 
         <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">

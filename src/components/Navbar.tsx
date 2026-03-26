@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-
 const navLinks = [
   { label: "Cosa Facciamo", to: "/services" },
   { label: "Chi Siamo", to: "/about" },
@@ -40,8 +39,8 @@ const Navbar = () => {
     <>
       <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/[0.05] bg-[rgba(10,10,10,0.85)] backdrop-blur-[20px]">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-12">
-          <Link to="/">
-            <img src="/lovable-uploads/c31ed815-a391-45d3-b3f4-99201ed6f191.png" alt="BD Media" className="h-9 w-auto mx-0 my-0 mr-0 ml-px mb-[2px] pr-0 pb-0 pt-0 pl-0" />
+          <Link to="/" className="text-[22px] font-extrabold tracking-tight">
+            BD<span className="text-primary">·</span>MEDIA
           </Link>
 
           {/* Desktop links */}
