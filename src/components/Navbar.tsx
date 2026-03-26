@@ -39,8 +39,15 @@ const Navbar = () => {
     <>
       <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/[0.05] bg-[rgba(10,10,10,0.85)] backdrop-blur-[20px]">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-12">
-          <Link to="/" className="text-[22px] font-extrabold tracking-tight">
-            BD<span className="text-primary">·</span>MEDIA
+          <Link to="/" className="flex items-center gap-[10px]">
+            <img
+              src="/logo-symbol.png"
+              alt="BD Media symbol"
+              className="block h-6 w-auto md:h-7"
+            />
+            <span className="text-[22px] font-extrabold tracking-tight">
+              BD<span className="text-primary"> </span>MEDIA
+            </span>
           </Link>
 
           {/* Desktop links */}
