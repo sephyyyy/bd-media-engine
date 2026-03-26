@@ -43,7 +43,7 @@ const Navbar = () => {
             <img
               src="/logo-symbol.png"
               alt="BD Media symbol"
-              className="block h-6 w-auto md:h-7"
+              className="block h-12 w-auto md:h-14"
             />
             <span className="text-[22px] font-extrabold tracking-tight">
               BD<span className="text-primary"> </span>MEDIA

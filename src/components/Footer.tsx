@@ -9,7 +9,7 @@ const Footer = () => (
             <img
               src="/logo-symbol.png"
               alt="BD Media symbol"
-              className="block h-6 w-auto"
+              className="block h-12 w-auto"
             />
             <span className="text-[22px] font-extrabold tracking-tight">
               BD<span className="text-primary"> </span>MEDIA
