@@ -96,9 +96,9 @@ const Navbar = () => {
           {/* Right */}
           <div className="hidden items-center gap-4 md:flex">
             <span className="text-xs font-medium text-muted-foreground">IT</span>
-            <Link to="/services" className="btn-primary text-sm">
+            <button onClick={openContactModal} className="btn-primary text-sm">
               Analisi Gratuita →
-            </Link>
+            </button>
           </div>
 
           {/* Hamburger */}
