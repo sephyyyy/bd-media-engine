@@ -20,7 +20,9 @@ const howWeWork = [
   { title: "Ottimizzazione continua", desc: "Il sistema non si monta e si lascia girare. Lo monitoriamo, testiamo e miglioriamo ogni settimana." },
 ];
 
-const Services = () => (
+const Services = () => {
+  const { open: openContactModal } = useContactModal();
+  return (
   <div>
     <section className="section-padding pt-32">
       <div className="mx-auto max-w-7xl">
