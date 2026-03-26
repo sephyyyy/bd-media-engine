@@ -73,9 +73,9 @@ const Index = () => {
 
           <ScrollReveal delay={300}>
             <div className="mt-10 flex flex-wrap items-center gap-5">
-              <Link to="/services" className="btn-primary">
+              <button onClick={openContactModal} className="btn-primary">
                 Ottieni l'analisi gratuita →
-              </Link>
+              </button>
               <a href="#case-study" className="text-sm text-muted-foreground underline decoration-white/20 underline-offset-4 transition-colors hover:text-foreground">
                 Vedi i risultati
               </a>
