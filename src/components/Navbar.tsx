@@ -20,6 +20,7 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const { open: openContactModal } = useContactModal();
 
   useEffect(() => {
     setMobileOpen(false);
