@@ -137,9 +137,9 @@ const Navbar = () => {
                   </Link>
                 ))}
               </div>
-              <Link to="/services" className="btn-primary mt-4 justify-center text-sm">
+              <button onClick={openContactModal} className="btn-primary mt-4 w-full justify-center text-sm">
                 Analisi Gratuita →
-              </Link>
+              </button>
             </div>
           </div>
         </div>

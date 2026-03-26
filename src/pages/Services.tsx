@@ -87,11 +87,12 @@ const Services = () => {
       <div className="relative mx-auto max-w-3xl text-center">
         <ScrollReveal>
           <h2 className="text-3xl font-extrabold tracking-tight">Pronto a costruire il tuo sistema di acquisizione?</h2>
-          <Link to="/services" className="btn-primary mt-8 inline-flex">Inizia con l'analisi gratuita →</Link>
+          <button onClick={openContactModal} className="btn-primary mt-8 inline-flex">Inizia con l'analisi gratuita →</button>
         </ScrollReveal>
       </div>
     </section>
   </div>
-);
+  );
+};
 
 export default Services;

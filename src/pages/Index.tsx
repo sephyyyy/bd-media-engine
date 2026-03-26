@@ -224,9 +224,9 @@ const Index = () => {
             <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
               Pronto a costruire il tuo sistema di acquisizione?
             </h2>
-            <Link to="/services" className="btn-primary mt-8 inline-flex">
+            <button onClick={openContactModal} className="btn-primary mt-8 inline-flex">
               Ottieni l'analisi gratuita →
-            </Link>
+            </button>
           </ScrollReveal>
         </div>
       </section>
