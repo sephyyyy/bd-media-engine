@@ -1,5 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { Link } from "react-router-dom";
+import { useContactModal } from "@/components/ContactModalContext";
 
 const team = [
   { initials: "BD", name: "Bedr Diana", role: "CEO & Founder" },
