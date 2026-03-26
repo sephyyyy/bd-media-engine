@@ -125,7 +125,7 @@ const About = () => {
       <div className="relative mx-auto max-w-3xl text-center">
         <ScrollReveal>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Link to="/services" className="btn-primary">Costruisci qualcosa insieme a noi →</Link>
+            <button onClick={openContactModal} className="btn-primary">Costruisci qualcosa insieme a noi →</button>
             <Link to="/portfolio" className="text-sm text-muted-foreground underline decoration-white/20 underline-offset-4 transition-colors hover:text-foreground">
               Siamo il partner giusto per i tuoi obiettivi? Scopriamolo insieme →
             </Link>

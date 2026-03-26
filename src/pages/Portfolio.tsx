@@ -106,7 +106,7 @@ const Portfolio = () => {
         <div className="relative mx-auto max-w-3xl text-center">
           <ScrollReveal>
             <h2 className="text-3xl font-extrabold tracking-tight">Il tuo progetto potrebbe essere il prossimo.</h2>
-            <button onClick={useContactModal().open} className="btn-primary mt-8 inline-flex">Parliamo del tuo obiettivo →</button>
+            <button onClick={openContactModal} className="btn-primary mt-8 inline-flex">Parliamo del tuo obiettivo →</button>
           </ScrollReveal>
         </div>
       </section>
