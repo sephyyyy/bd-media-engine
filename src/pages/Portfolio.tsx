@@ -25,6 +25,7 @@ const statsStrip = [
 
 const Portfolio = () => {
   const [filter, setFilter] = useState("Tutti");
+  const { open: openContactModal } = useContactModal();
 
   const filtered = filter === "Tutti" ? projects : projects.filter((p) => p.cat === filter);
 
