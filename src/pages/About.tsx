@@ -18,7 +18,9 @@ const values = [
   { emoji: "✍️", title: "Ci mettiamo la firma", desc: "Ogni progetto che seguiamo è un progetto in cui mettiamo il nostro nome. Se non possiamo garantire qualità e crescita, preferiamo non iniziare." },
 ];
 
-const About = () => (
+const About = () => {
+  const { open: openContactModal } = useContactModal();
+  return (
   <div>
     <section className="section-padding pt-32">
       <div className="mx-auto max-w-7xl">
