@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useContactModal } from "./ContactModalContext";
 
 const navLinks = [
   { label: "Cosa Facciamo", to: "/services" },
@@ -19,6 +20,7 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const { open: openContactModal } = useContactModal();
 
   useEffect(() => {
     setMobileOpen(false);
@@ -94,9 +96,9 @@ const Navbar = () => {
           {/* Right */}
           <div className="hidden items-center gap-4 md:flex">
             <span className="text-xs font-medium text-muted-foreground">IT</span>
-            <Link to="/services" className="btn-primary text-sm">
+            <button onClick={openContactModal} className="btn-primary text-sm">
               Analisi Gratuita →
-            </Link>
+            </button>
           </div>
 
           {/* Hamburger */}
@@ -135,9 +137,9 @@ const Navbar = () => {
                   </Link>
                 ))}
               </div>
-              <Link to="/services" className="btn-primary mt-4 justify-center text-sm">
+              <button onClick={openContactModal} className="btn-primary mt-4 w-full justify-center text-sm">
                 Analisi Gratuita →
-              </Link>
+              </button>
             </div>
           </div>
         </div>

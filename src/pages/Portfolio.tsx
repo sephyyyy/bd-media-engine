@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
-import { Link } from "react-router-dom";
+import { useContactModal } from "@/components/ContactModalContext";
 
 const categories = ["Tutti", "Ristorazione", "Brand Identity", "Digital", "Community"];
 
@@ -25,6 +25,7 @@ const statsStrip = [
 
 const Portfolio = () => {
   const [filter, setFilter] = useState("Tutti");
+  const { open: openContactModal } = useContactModal();
 
   const filtered = filter === "Tutti" ? projects : projects.filter((p) => p.cat === filter);
 
@@ -105,7 +106,7 @@ const Portfolio = () => {
         <div className="relative mx-auto max-w-3xl text-center">
           <ScrollReveal>
             <h2 className="text-3xl font-extrabold tracking-tight">Il tuo progetto potrebbe essere il prossimo.</h2>
-            <Link to="/services" className="btn-primary mt-8 inline-flex">Parliamo del tuo obiettivo →</Link>
+            <button onClick={openContactModal} className="btn-primary mt-8 inline-flex">Parliamo del tuo obiettivo →</button>
           </ScrollReveal>
         </div>
       </section>

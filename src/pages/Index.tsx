@@ -1,6 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import MarqueeStrip from "@/components/MarqueeStrip";
-import { Link } from "react-router-dom";
+import { useContactModal } from "@/components/ContactModalContext";
 
 const stats = [
   { value: "2K+", label: "Lead qualificati generati in meno di 12 mesi di attività" },
@@ -37,6 +37,7 @@ const testimonials = [
 ];
 
 const Index = () => {
+  const { open: openContactModal } = useContactModal();
   return (
     <div>
       {/* Hero */}
@@ -72,9 +73,9 @@ const Index = () => {
 
           <ScrollReveal delay={300}>
             <div className="mt-10 flex flex-wrap items-center gap-5">
-              <Link to="/services" className="btn-primary">
+              <button onClick={openContactModal} className="btn-primary">
                 Ottieni l'analisi gratuita →
-              </Link>
+              </button>
               <a href="#case-study" className="text-sm text-muted-foreground underline decoration-white/20 underline-offset-4 transition-colors hover:text-foreground">
                 Vedi i risultati
               </a>
@@ -223,9 +224,9 @@ const Index = () => {
             <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
               Pronto a costruire il tuo sistema di acquisizione?
             </h2>
-            <Link to="/services" className="btn-primary mt-8 inline-flex">
+            <button onClick={openContactModal} className="btn-primary mt-8 inline-flex">
               Ottieni l'analisi gratuita →
-            </Link>
+            </button>
           </ScrollReveal>
         </div>
       </section>

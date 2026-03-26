@@ -1,5 +1,5 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import { Link } from "react-router-dom";
+import { useContactModal } from "@/components/ContactModalContext";
 
 const services = [
   { num: "01", name: "Multiplatform ADS", desc: "Campagne pubblicitarie su Meta (Facebook & Instagram), Google, TikTok e LinkedIn. Costruiamo funnel completi dalla awareness alla conversione, ottimizzati settimana per settimana sui dati reali — non sulle intuizioni.", tags: ["Meta Ads", "Google Ads", "TikTok Ads", "LinkedIn Ads", "Funnel Strategy"] },
@@ -20,7 +20,9 @@ const howWeWork = [
   { title: "Ottimizzazione continua", desc: "Il sistema non si monta e si lascia girare. Lo monitoriamo, testiamo e miglioriamo ogni settimana." },
 ];
 
-const Services = () => (
+const Services = () => {
+  const { open: openContactModal } = useContactModal();
+  return (
   <div>
     <section className="section-padding pt-32">
       <div className="mx-auto max-w-7xl">
@@ -85,11 +87,12 @@ const Services = () => (
       <div className="relative mx-auto max-w-3xl text-center">
         <ScrollReveal>
           <h2 className="text-3xl font-extrabold tracking-tight">Pronto a costruire il tuo sistema di acquisizione?</h2>
-          <Link to="/services" className="btn-primary mt-8 inline-flex">Inizia con l'analisi gratuita →</Link>
+          <button onClick={openContactModal} className="btn-primary mt-8 inline-flex">Inizia con l'analisi gratuita →</button>
         </ScrollReveal>
       </div>
     </section>
   </div>
-);
+  );
+};
 
 export default Services;
