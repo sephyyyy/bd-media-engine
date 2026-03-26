@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logoImg from "@/assets/logo_bd_media.png";
 
 const Footer = () => (
   <footer className="border-t border-white/[0.06] bg-background px-6 py-16 md:px-12 lg:px-20">
