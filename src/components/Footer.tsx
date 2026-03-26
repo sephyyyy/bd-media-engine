@@ -5,8 +5,15 @@ const Footer = () => (
     <div className="mx-auto max-w-7xl">
       <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
         <div>
-          <Link to="/" className="text-[22px] font-extrabold tracking-tight">
-            BD<span className="text-primary">·</span>MEDIA
+          <Link to="/" className="flex items-center gap-[10px]">
+            <img
+              src="/logo-symbol.png"
+              alt="BD Media symbol"
+              className="block h-6 w-auto"
+            />
+            <span className="text-[22px] font-extrabold tracking-tight">
+              BD<span className="text-primary"> </span>MEDIA
+            </span>
           </Link>
           <p className="mt-2 text-sm text-muted-foreground">Growth Partner</p>
         </div>
