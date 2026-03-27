@@ -1,19 +1,38 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useContactModal } from "./ContactModalContext";
-
-const navLinks = [
-  { label: "Cosa Facciamo", to: "/services" },
-  { label: "Chi Siamo", to: "/about" },
-  { label: "Portfolio", to: "/portfolio" },
-  { label: "Blog", to: "/blog" },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/i18n/translations";
 
 const dropdownLinks = [
-  { label: "Politica della Privacy", to: "/privacy" },
-  { label: "Rimborsi", to: "/rimborsi" },
-  { label: "Termini e Condizioni", to: "/termini" },
+  { key: "privacy" as const, to: "/privacy" },
+  { key: "rimborsi" as const, to: "/rimborsi" },
+  { key: "termini" as const, to: "/termini" },
 ];
+
+const LangSwitcher = () => {
+  const { lang, setLang } = useLanguage();
+  return (
+    <div className="flex items-center gap-0.5 rounded-full border border-white/[0.12] px-1.5 py-1 text-xs font-semibold tracking-wide select-none">
+      <button
+        onClick={() => setLang("it")}
+        className={`rounded-full border-none px-2.5 py-1 text-xs font-semibold tracking-wide transition-all ${
+          lang === "it" ? "bg-white/[0.08] text-foreground" : "bg-transparent text-muted-foreground"
+        }`}
+      >
+        IT
+      </button>
+      <button
+        onClick={() => setLang("en")}
+        className={`rounded-full border-none px-2.5 py-1 text-xs font-semibold tracking-wide transition-all ${
+          lang === "en" ? "bg-white/[0.08] text-foreground" : "bg-transparent text-muted-foreground"
+        }`}
+      >
+        EN
+      </button>
+    </div>
+  );
+};
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,6 +40,15 @@ const Navbar = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const { open: openContactModal } = useContactModal();
+  const { t } = useLanguage();
+  const T = translations.nav;
+
+  const navLinks = [
+    { label: t(T.services), to: "/services" },
+    { label: t(T.about), to: "/about" },
+    { label: t(T.portfolio), to: "/portfolio" },
+    { label: t(T.blog), to: "/blog" },
+  ];
 
   useEffect(() => {
     setMobileOpen(false);
@@ -72,7 +100,7 @@ const Navbar = () => {
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                Pagine
+                {t(T.pages)}
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`}>
                   <path d="M3 5L6 8L9 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -85,7 +113,7 @@ const Navbar = () => {
                       to={l.to}
                       className="block rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-white/[0.04] hover:text-foreground"
                     >
-                      {l.label}
+                      {t(T[l.key])}
                     </Link>
                   ))}
                 </div>
@@ -95,9 +123,9 @@ const Navbar = () => {
 
           {/* Right */}
           <div className="hidden items-center gap-4 md:flex">
-            <span className="text-xs font-medium text-muted-foreground">IT</span>
+            <LangSwitcher />
             <button onClick={openContactModal} className="btn-primary text-sm">
-              Analisi Gratuita →
+              {t(T.cta)}
             </button>
           </div>
 
@@ -133,12 +161,13 @@ const Navbar = () => {
               <div className="border-t border-white/[0.06] pt-4">
                 {dropdownLinks.map((l) => (
                   <Link key={l.to} to={l.to} className="block py-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
-                    {l.label}
+                    {t(T[l.key])}
                   </Link>
                 ))}
               </div>
+              <LangSwitcher />
               <button onClick={openContactModal} className="btn-primary mt-4 w-full justify-center text-sm">
-                Analisi Gratuita →
+                {t(T.cta)}
               </button>
             </div>
           </div>

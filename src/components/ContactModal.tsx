@@ -1,52 +1,38 @@
 import { useState, useEffect, useRef } from "react";
 import { useContactModal } from "./ContactModalContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/i18n/translations";
 import { X } from "lucide-react";
-
-const topics = [
-  "Campagne pubblicitarie (Meta, Google, TikTok)",
-  "Sito web e landing page",
-  "Social media management",
-  "Brand identity",
-  "Email marketing e automazioni",
-  "AI marketing",
-  "Altro",
-];
 
 const ContactModal = () => {
   const { isOpen, close } = useContactModal();
+  const { t } = useLanguage();
+  const T = translations.modal;
   const [submitted, setSubmitted] = useState(false);
   const [visible, setVisible] = useState(false);
   const [animating, setAnimating] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Lock body scroll
+  const topics = [
+    t(T.topic_1), t(T.topic_2), t(T.topic_3), t(T.topic_4),
+    t(T.topic_5), t(T.topic_6), t(T.topic_7),
+  ];
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      // trigger enter animation
-      requestAnimationFrame(() => {
-        setVisible(true);
-      });
+      requestAnimationFrame(() => { setVisible(true); });
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
   const handleClose = () => {
     setVisible(false);
     setAnimating(true);
-    setTimeout(() => {
-      close();
-      setSubmitted(false);
-      setAnimating(false);
-    }, 150);
+    setTimeout(() => { close(); setSubmitted(false); setAnimating(false); }, 150);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
 
   if (!isOpen && !animating) return null;
 
@@ -66,7 +52,6 @@ const ContactModal = () => {
       }}
       onClick={handleClose}
     >
-      {/* Mobile: bottom-sheet. Desktop: centered card */}
       <div
         ref={cardRef}
         onClick={(e) => e.stopPropagation()}
@@ -80,90 +65,57 @@ const ContactModal = () => {
         }}
       >
         <div className="relative max-h-[90vh] overflow-y-auto p-6 sm:p-8">
-          {/* Close button */}
           <button
             onClick={handleClose}
             className="absolute right-4 top-4 text-muted-foreground transition-colors hover:text-foreground"
-            aria-label="Chiudi"
+            aria-label="Close"
           >
             <X className="h-5 w-5" />
           </button>
 
           {submitted ? (
             <div className="flex min-h-[200px] flex-col items-center justify-center text-center">
-              <p className="text-lg font-bold text-primary">
-                ✦ Richiesta inviata.
-              </p>
-              <p className="mt-2 text-sm text-primary">
-                Ti contatteremo entro 24 ore.
-              </p>
+              <p className="text-lg font-bold text-primary">{t(T.success)}</p>
             </div>
           ) : (
             <>
-              {/* Eyebrow */}
               <div className="eyebrow mb-3 flex items-center gap-3">
                 <span className="h-px w-6 bg-primary" />
-                ANALISI GRATUITA
+                {t(T.eyebrow)}
               </div>
 
               <h2
                 className="text-[28px] font-extrabold leading-tight text-foreground"
                 style={{ letterSpacing: "-1px" }}
               >
-                Parliamo del tuo progetto.
+                {t(T.title)}
               </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Compila il form. Ti ricontattiamo entro 24 ore.
-              </p>
+              <p className="mt-2 text-sm text-muted-foreground">{t(T.subtitle)}</p>
 
               <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-                {/* Nome / Cognome */}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <label className={labelClass}>Nome</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Il tuo nome"
-                      className={inputClass}
-                    />
+                    <label className={labelClass}>{t(T.label_nome)}</label>
+                    <input type="text" required placeholder={t(T.placeholder_nome)} className={inputClass} />
                   </div>
                   <div>
-                    <label className={labelClass}>Cognome</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Il tuo cognome"
-                      className={inputClass}
-                    />
+                    <label className={labelClass}>{t(T.label_cognome)}</label>
+                    <input type="text" required placeholder={t(T.placeholder_cognome)} className={inputClass} />
                   </div>
                 </div>
 
-                {/* Telefono */}
                 <div>
-                  <label className={labelClass}>Telefono</label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="+39 000 000 0000"
-                    className={inputClass}
-                  />
+                  <label className={labelClass}>{t(T.label_telefono)}</label>
+                  <input type="tel" required placeholder={t(T.placeholder_telefono)} className={inputClass} />
                 </div>
 
-                {/* Email */}
                 <div>
-                  <label className={labelClass}>Email</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="tu@email.com"
-                    className={inputClass}
-                  />
+                  <label className={labelClass}>{t(T.label_email)}</label>
+                  <input type="email" required placeholder={t(T.placeholder_email)} className={inputClass} />
                 </div>
 
-                {/* Select */}
                 <div>
-                  <label className={labelClass}>Di cosa vuoi parlare?</label>
+                  <label className={labelClass}>{t(T.label_topic)}</label>
                   <select required defaultValue="" className={`${inputClass} appearance-none`}
                     style={{
                       backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 5L6 8L9 5' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
@@ -171,23 +123,15 @@ const ContactModal = () => {
                       backgroundPosition: "right 16px center",
                     }}
                   >
-                    <option value="" disabled>
-                      Seleziona un argomento
-                    </option>
-                    {topics.map((t) => (
-                      <option key={t} value={t}>
-                        {t}
-                      </option>
+                    <option value="" disabled>{t(T.topic_placeholder)}</option>
+                    {topics.map((topic) => (
+                      <option key={topic} value={topic}>{topic}</option>
                     ))}
                   </select>
                 </div>
 
-                {/* Submit */}
-                <button
-                  type="submit"
-                  className="btn-primary w-full justify-center py-4 text-[15px]"
-                >
-                  Invia la richiesta →
+                <button type="submit" className="btn-primary w-full justify-center py-4 text-[15px]">
+                  {t(T.submit)}
                 </button>
               </form>
             </>
