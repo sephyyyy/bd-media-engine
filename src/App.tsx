@@ -55,6 +55,7 @@ const App = () => (
           <Footer />
         </BrowserRouter>
       </ContactModalProvider>
+      </LanguageProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
