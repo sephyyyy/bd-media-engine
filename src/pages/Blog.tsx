@@ -1,25 +1,7 @@
 import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
-
-const blogCategories = ["Tutti", "Digital Marketing", "SEO", "Advertising", "Social Media", "News"];
-
-const featured = {
-  category: "AI",
-  title: "Come l'AI sta ridisegnando le strategie di digital marketing nel 2025",
-  excerpt: "Dal content automatizzato agli algoritmi predittivi: scopri come i brand più intelligenti stanno integrando l'intelligenza artificiale per abbattere i costi e triplicare le conversioni. Un'analisi completa con dati reali dai nostri clienti.",
-  meta: "BD Team • BD Media • 12 Marzo 2025 • 8 min di lettura",
-};
-
-const articles = [
-  { cat: "SEO", title: "SEO Google SGE e il futuro della SEO: cosa cambia per chi fa content marketing nel 2025", date: "5 Febbraio 2025", time: "6 min" },
-  { cat: "Advertising", title: "Meta Ads 2025: le campagne che funzionano adesso", date: "20 Gennaio 2025", time: "5 min" },
-  { cat: "Social Media", title: "TikTok per i brand B2B: mito o opportunità concreta?", date: "8 Gennaio 2025", time: "4 min" },
-  { cat: "Digital Marketing", title: "Conversion Rate Optimization: 7 test A/B che hanno cambiato tutto", date: "15 Dicembre 2024", time: "7 min" },
-  { cat: "News", title: "Case Study: come abbiamo scalato un e-commerce da 0 a 400k/mese", date: "1 Dicembre 2024", time: "10 min" },
-  { cat: "SEO", title: "Link building nel 2025: cosa funziona ancora e cosa evitare", date: "18 Novembre 2024", time: "5 min" },
-  { cat: "Advertising", title: "Google Ads Performance Max nel 2025: guida avanzata", date: "3 Novembre 2024", time: "9 min" },
-  { cat: "News", title: "BD Media è ufficialmente certificata Meta Business Partner", date: "20 Ottobre 2024", time: "3 min" },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/i18n/translations";
 
 const catColors: Record<string, string> = {
   SEO: "border-emerald-500/30 text-emerald-400",
@@ -31,27 +13,46 @@ const catColors: Record<string, string> = {
 };
 
 const Blog = () => {
-  const [filter, setFilter] = useState("Tutti");
+  const [filter, setFilter] = useState("all");
+  const { t } = useLanguage();
+  const B = translations.blog;
 
-  const filtered = filter === "Tutti" ? articles : articles.filter((a) => a.cat === filter);
+  const blogCategories = [
+    { key: "all", label: t(B.filters.all) },
+    { key: "Digital Marketing", label: t(B.filters.digital) },
+    { key: "SEO", label: t(B.filters.seo) },
+    { key: "Advertising", label: t(B.filters.adv) },
+    { key: "Social Media", label: t(B.filters.social) },
+    { key: "News", label: t(B.filters.news) },
+  ];
+
+  const articles = [
+    { cat: "SEO", title: t(B.a2_title), date: "5 Febbraio 2025", time: "6 min" },
+    { cat: "Advertising", title: t(B.a3_title), date: "20 Gennaio 2025", time: "5 min" },
+    { cat: "Social Media", title: t(B.a4_title), date: "8 Gennaio 2025", time: "4 min" },
+    { cat: "Digital Marketing", title: t(B.a5_title), date: "15 Dicembre 2024", time: "7 min" },
+    { cat: "News", title: t(B.a6_title), date: "1 Dicembre 2024", time: "10 min" },
+    { cat: "SEO", title: t(B.a7_title), date: "18 Novembre 2024", time: "5 min" },
+    { cat: "Advertising", title: t(B.a8_title), date: "3 Novembre 2024", time: "9 min" },
+    { cat: "News", title: t(B.a9_title), date: "20 Ottobre 2024", time: "3 min" },
+  ];
+
+  const filtered = filter === "all" ? articles : articles.filter((a) => a.cat === filter);
 
   return (
     <div>
       <section className="section-padding pt-32">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal>
-            <div className="eyebrow mb-4 flex items-center gap-3"><span className="h-px w-8 bg-primary" />BLOG</div>
-            <h1 className="heading-hero max-w-4xl">Insights & News — Il nostro Blog.</h1>
-            <p className="mt-4 max-w-2xl text-base text-muted-foreground">
-              Strategie, aggiornamenti dal settore e casi studio dal team BD Media. Tutto quello che devi sapere per crescere online.
-            </p>
+            <div className="eyebrow mb-4 flex items-center gap-3"><span className="h-px w-8 bg-primary" />{t(B.hero.eyebrow)}</div>
+            <h1 className="heading-hero max-w-4xl">{t(B.hero.h1)} — {t(B.hero.subtitle)}</h1>
+            <p className="mt-4 max-w-2xl text-base text-muted-foreground">{t(B.hero.body)}</p>
           </ScrollReveal>
-
           <ScrollReveal delay={100}>
             <div className="mt-8 flex flex-wrap gap-6 text-sm">
-              <span><strong className="text-foreground">48+</strong> <span className="text-muted-foreground">Articoli pubblicati</span></span>
-              <span><strong className="text-foreground">5</strong> <span className="text-muted-foreground">Categorie</span></span>
-              <span><strong className="text-foreground">2×</strong> <span className="text-muted-foreground">Aggiornamenti/mese</span></span>
+              <span><strong className="text-foreground">{t(B.hero.stat1_value)}</strong> <span className="text-muted-foreground">{t(B.hero.stat1_label)}</span></span>
+              <span><strong className="text-foreground">{t(B.hero.stat2_value)}</strong> <span className="text-muted-foreground">{t(B.hero.stat2_label)}</span></span>
+              <span><strong className="text-foreground">{t(B.hero.stat3_value)}</strong> <span className="text-muted-foreground">{t(B.hero.stat3_label)}</span></span>
             </div>
           </ScrollReveal>
         </div>
@@ -62,10 +63,10 @@ const Blog = () => {
         <div className="mx-auto max-w-7xl">
           <ScrollReveal>
             <div className="card-surface border-primary/20">
-              <span className={`inline-block rounded-full border px-3 py-1 text-[11px] font-medium ${catColors[featured.category]}`}>{featured.category}</span>
-              <h2 className="mt-4 text-2xl font-extrabold leading-tight md:text-3xl">{featured.title}</h2>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">{featured.excerpt}</p>
-              <p className="mt-4 text-xs text-muted-foreground">{featured.meta}</p>
+              <span className={`inline-block rounded-full border px-3 py-1 text-[11px] font-medium ${catColors["AI"]}`}>AI</span>
+              <h2 className="mt-4 text-2xl font-extrabold leading-tight md:text-3xl">{t(B.a1_title)}</h2>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">{t(B.a1_excerpt)}</p>
+              <p className="mt-4 text-xs text-muted-foreground">BD Team • BD Media • 12 Marzo 2025 • 8 {t(B.read_time)}</p>
             </div>
           </ScrollReveal>
         </div>
@@ -78,13 +79,13 @@ const Blog = () => {
             <div className="mb-10 flex flex-wrap gap-2">
               {blogCategories.map((c) => (
                 <button
-                  key={c}
-                  onClick={() => setFilter(c)}
+                  key={c.key}
+                  onClick={() => setFilter(c.key)}
                   className={`rounded-pill px-5 py-2 text-sm font-medium transition-all ${
-                    filter === c ? "bg-primary text-primary-foreground" : "border border-white/[0.06] text-muted-foreground hover:text-foreground"
+                    filter === c.key ? "bg-primary text-primary-foreground" : "border border-white/[0.06] text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  {c}
+                  {c.label}
                 </button>
               ))}
             </div>
@@ -113,15 +114,14 @@ const Blog = () => {
         <div className="mx-auto max-w-2xl">
           <ScrollReveal>
             <div className="card-surface border-primary/20 text-center">
-              <h3 className="text-xl font-bold">Ricevi i migliori insights direttamente nella tua inbox.</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Niente spam. Solo aggiornamenti di valore.</p>
+              <h3 className="text-xl font-bold">{t(B.newsletter.body)}</h3>
               <div className="mt-6 flex gap-3">
                 <input
                   type="email"
-                  placeholder="La tua email"
+                  placeholder={t(B.newsletter.placeholder)}
                   className="flex-1 rounded-pill border border-white/[0.06] bg-white/[0.03] px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-primary"
                 />
-                <button className="btn-primary whitespace-nowrap">Iscriviti →</button>
+                <button className="btn-primary whitespace-nowrap">{t(B.newsletter.button)}</button>
               </div>
             </div>
           </ScrollReveal>

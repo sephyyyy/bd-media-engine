@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import NoiseOverlay from "@/components/NoiseOverlay";
 import ContactModal from "@/components/ContactModal";
 import { ContactModalProvider } from "@/components/ContactModalContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import About from "./pages/About";
@@ -29,6 +30,7 @@ const ScrollToTop = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <LanguageProvider>
       <ContactModalProvider>
         <Toaster />
         <Sonner />
