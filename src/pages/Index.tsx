@@ -31,7 +31,7 @@ const Index = () => {
   return (
     <div>
       {/* Hero */}
-      <section className="relative flex min-h-screen items-end overflow-hidden px-6 pb-20 pt-32 md:px-12 lg:px-20">
+      <section className="relative flex min-h-[80vh] items-end overflow-hidden px-6 pb-16 pt-24 md:px-12 lg:px-20">
         <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none text-[30vw] font-extrabold leading-none text-white/[0.02]">
           BD
         </div>
