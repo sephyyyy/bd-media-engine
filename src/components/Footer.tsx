@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-white/[0.06] bg-background px-6 py-16 md:px-12 lg:px-20">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+        <div className="flex flex-col items-center gap-10 md:flex-row md:items-start md:justify-between">
           <div>
             <Link to="/" className="flex items-center gap-[10px]">
               <img
