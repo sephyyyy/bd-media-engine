@@ -11,8 +11,8 @@ const Index = () => {
 
   const stats = [
     { value: t(H.stats.stat1_value), label: t(H.stats.stat1_label) },
-    { value: t(H.stats.stat2_value), label: t(H.stats.stat2_label) },
     { value: t(H.stats.stat3_value), label: t(H.stats.stat3_label) },
+    { value: t(H.stats.stat2_value), label: t(H.stats.stat2_label) },
   ];
 
   const steps = [
