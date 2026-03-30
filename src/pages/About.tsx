@@ -1,5 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import { Link } from "react-router-dom";
+import { BarChart3, Search, Zap, Target, FlaskConical, PenTool } from "lucide-react";
 import { useContactModal } from "@/components/ContactModalContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/i18n/translations";
