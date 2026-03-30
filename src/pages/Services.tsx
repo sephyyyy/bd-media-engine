@@ -57,7 +57,7 @@ const Services = () => {
         </div>
       </section>
 
-      <section className="section-padding">
+      <section className="section-padding !pt-0">
         <div className="mx-auto max-w-7xl space-y-6">
           {serviceKeys.map((s, i) => (
             <ScrollReveal key={i} delay={i * 60}>
