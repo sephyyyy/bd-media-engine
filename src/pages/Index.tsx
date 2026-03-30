@@ -75,7 +75,7 @@ const Index = () => {
           <div className="mt-16 grid gap-6 md:grid-cols-3">
             {stats.map((s, i) => (
               <ScrollReveal key={i} delay={i * 100}>
-                <div className="card-surface">
+                <div className="card-surface flex h-full flex-col justify-between">
                   <div className="text-6xl font-extrabold tracking-tight md:text-7xl">{s.value}</div>
                   <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.label}</p>
                 </div>
