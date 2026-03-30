@@ -18,12 +18,12 @@ const About = () => {
   ];
 
   const values = [
-    { emoji: "📊", title: t(A.values.v1_title), desc: t(A.values.v1_body) },
-    { emoji: "🔍", title: t(A.values.v2_title), desc: t(A.values.v2_body) },
-    { emoji: "⚡", title: t(A.values.v3_title), desc: t(A.values.v3_body) },
-    { emoji: "🎯", title: t(A.values.v4_title), desc: t(A.values.v4_body) },
-    { emoji: "🔬", title: t(A.values.v5_title), desc: t(A.values.v5_body) },
-    { emoji: "✍️", title: t(A.values.v6_title), desc: t(A.values.v6_body) },
+    { icon: BarChart3, title: t(A.values.v1_title), desc: t(A.values.v1_body) },
+    { icon: Search, title: t(A.values.v2_title), desc: t(A.values.v2_body) },
+    { icon: Zap, title: t(A.values.v3_title), desc: t(A.values.v3_body) },
+    { icon: Target, title: t(A.values.v4_title), desc: t(A.values.v4_body) },
+    { icon: FlaskConical, title: t(A.values.v5_title), desc: t(A.values.v5_body) },
+    { icon: PenTool, title: t(A.values.v6_title), desc: t(A.values.v6_body) },
   ];
 
   return (
