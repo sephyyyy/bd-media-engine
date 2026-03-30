@@ -84,7 +84,7 @@ const Services = () => {
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {howWeWork.map((h, i) => (
               <ScrollReveal key={i} delay={i * 80}>
-                <div className="card-surface">
+                <div className="card-surface h-full">
                   <h3 className="text-base font-bold">{h.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{h.desc}</p>
                 </div>
