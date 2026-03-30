@@ -89,7 +89,7 @@ const About = () => {
             {values.map((v, i) => (
               <ScrollReveal key={i} delay={i * 80}>
                 <div className="card-surface h-full">
-                  <span className="text-2xl">{v.emoji}</span>
+                  <v.icon className="h-5 w-5 text-primary" strokeWidth={1.5} />
                   <h3 className="mt-3 text-base font-bold">{v.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.desc}</p>
                 </div>
