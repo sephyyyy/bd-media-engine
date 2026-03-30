@@ -84,9 +84,6 @@ const Portfolio = () => {
                 <div className="mt-4 flex flex-wrap gap-2">
                   {p.tags.map((tag) => <span key={tag} className="tag-pill text-[10px]">{tag}</span>)}
                 </div>
-                <div className="mt-4">
-                  <span className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer">{t(P.view_project)}</span>
-                </div>
               </div>
             </ScrollReveal>
           ))}
