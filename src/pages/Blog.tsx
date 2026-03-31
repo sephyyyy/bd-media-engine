@@ -45,7 +45,7 @@ const Blog = () => {
         <div className="mx-auto max-w-7xl">
           <ScrollReveal>
             <div className="eyebrow mb-4 flex items-center gap-3"><span className="h-px w-8 bg-primary" />{t(B.hero.eyebrow)}</div>
-            <h1 className="heading-hero max-w-4xl">{t(B.hero.h1)} — {t(B.hero.subtitle)}</h1>
+            <h1 className="heading-hero max-w-4xl">{t(B.hero.h1)}. <span className="text-primary">{t(B.hero.subtitle)}</span></h1>
             <p className="mt-4 max-w-2xl text-base text-muted-foreground">{t(B.hero.body)}</p>
           </ScrollReveal>
           <ScrollReveal delay={100}>
