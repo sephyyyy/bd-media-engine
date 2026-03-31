@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-white/[0.06] bg-background px-6 py-16 md:px-12 lg:px-20">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
+        <div className="relative flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
           <div>
             <Link to="/">
               <img
@@ -20,7 +20,7 @@ const Footer = () => {
             </Link>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 text-center text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-6 text-center text-sm text-muted-foreground md:absolute md:left-1/2 md:-translate-x-1/2">
             <Link to="/privacy" className="transition-colors hover:text-foreground">{t(T.privacy)}</Link>
             <Link to="/termini" className="transition-colors hover:text-foreground">{t(T.termini)}</Link>
             <Link to="/rimborsi" className="transition-colors hover:text-foreground">Rimborsi</Link>
