@@ -9,22 +9,18 @@ const Footer = () => {
   return (
     <footer className="border-t border-white/[0.06] bg-background px-6 py-16 md:px-12 lg:px-20">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col items-center gap-10 md:flex-row md:items-start md:justify-between">
+        <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
           <div>
-            <Link to="/" className="flex items-center gap-[10px]">
+            <Link to="/">
               <img
-                src="/logo-symbol.png"
-                alt="BD Media symbol"
+                src="/logo-full.png"
+                alt="BD Media"
                 className="block h-12 w-auto"
               />
-              <span className="text-[22px] font-extrabold tracking-tight">
-                BD<span className="text-primary"> </span>MEDIA
-              </span>
             </Link>
-            <p className="mt-2 text-sm text-muted-foreground">{t(T.tagline)}</p>
           </div>
 
-          <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-6 text-center text-sm text-muted-foreground">
             <Link to="/privacy" className="transition-colors hover:text-foreground">{t(T.privacy)}</Link>
             <Link to="/termini" className="transition-colors hover:text-foreground">{t(T.termini)}</Link>
             <Link to="/rimborsi" className="transition-colors hover:text-foreground">Rimborsi</Link>
