@@ -250,7 +250,7 @@ const KPIDashboard = () => {
       if (el) el.textContent = t;
     };
     setTxt("delta-spend", `▲ +€${todaySpend} oggi · ${days} giorni attivi`);
-    setTxt("delta-revenue", `▲ +€${todayRev} oggi · ROAS ${ROAS_VAL.toFixed(2)}x`);
+    setTxt("delta-revenue", `▲ +€${todayRev} oggi);
     setTxt("delta-clicks", `▲ CTR ${CTR_VAL.toFixed(2)}% · dati reali`);
     setTxt("delta-imp", `▲ +${Math.round(4200 + seededRand(days * 3 + 2) * 7300).toLocaleString("it-IT")} oggi`);
 
