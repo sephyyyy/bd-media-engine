@@ -11,23 +11,25 @@ const Portfolio = () => {
   const P = translations.portfolio;
 
   const categories = [
-    { key: "all", label: t(P.filters.all) },
-    { key: "Ristorazione", label: t(P.filters.ristorazione) },
-    { key: "Brand Identity", label: t(P.filters.brand) },
-    { key: "Digital", label: t(P.filters.digital) },
-    { key: "Community", label: t(P.filters.community) },
+    { key: "all",           label: t(P.filters.all) },
+    { key: "Advertising",   label: t(P.filters.advertising) },
+    { key: "Social Media",  label: t(P.filters.social) },
+    { key: "Brand Identity",label: t(P.filters.brand) },
   ];
 
   const projects = [
-    { sig: "DDC", cat: "Ristorazione", client: "Dark Diamond Cafè", headline: t(P.p1_headline), desc: t(P.p1_body), tags: ["Brand Identity", "Meta Ads", "Lead Gen"] },
-    { sig: "AS", cat: "Digital", client: "AEON Studio", headline: t(P.p2_headline), desc: t(P.p2_body), tags: ["Social Media", "Ads", "Crescita"] },
-    { sig: "LoS", cat: "Digital", client: "Lab On Sense", headline: t(P.p3_headline), desc: t(P.p3_body), tags: ["Sito Web", "Brand Identity", "UX"] },
-    { sig: "AR", cat: "Community", client: "Arkes Roleplay", headline: t(P.p4_headline), desc: t(P.p4_body), tags: ["Community Management", "Discord"] },
-    { sig: "TD", cat: "Brand Identity", client: "TDSTUDIO", headline: t(P.p5_headline), desc: t(P.p5_body), tags: ["Branding", "Social", "Positioning"] },
-    { sig: "CaT", cat: "Ristorazione", client: "Caffè al Teatro", headline: t(P.p6_headline), desc: t(P.p6_body), tags: ["Social Media", "Brand", "Local"] },
-    { sig: "TI+", cat: "Digital", client: "TecIA+", headline: t(P.p7_headline), desc: t(P.p7_body), tags: ["AI", "Launch", "Digital"] },
-    { sig: "KP", cat: "Digital", client: "KP Management", headline: t(P.p8_headline), desc: t(P.p8_body), tags: ["Strategia", "Comunicazione", "B2B"] },
-    { sig: "AE", cat: "Digital", client: "Accademia Europea", headline: t(P.p9_headline), desc: t(P.p9_body), tags: ["Education", "Lead Gen", "Funnel"] },
+    { sig: "DDC", cat: "Advertising",   client: "Dark Diamond Cafè",    headline: t(P.p1_headline), desc: t(P.p1_body), tags: ["Brand Identity", "Meta Ads", "Lead Gen"] },
+    { sig: "AS",  cat: "Social Media",  client: "AEON Studio",          headline: t(P.p2_headline), desc: t(P.p2_body), tags: ["Social Media", "Ads", "Crescita"] },
+    { sig: "LoS", cat: "Brand Identity",client: "Lab On Sense",         headline: t(P.p3_headline), desc: t(P.p3_body), tags: ["Sito Web", "Brand Identity", "UX"] },
+    { sig: "AR",  cat: "Social Media",  client: "Arkes Roleplay",       headline: t(P.p4_headline), desc: t(P.p4_body), tags: ["Community Management", "Discord"] },
+    { sig: "TD",  cat: "Brand Identity",client: "TDSTUDIO",             headline: t(P.p5_headline), desc: t(P.p5_body), tags: ["Branding", "Social", "Positioning"] },
+    { sig: "CaT", cat: "Social Media",  client: "Caffè al Teatro",      headline: t(P.p6_headline), desc: t(P.p6_body), tags: ["Social Media", "Brand", "Local"] },
+    { sig: "TI+", cat: "Advertising",   client: "TecIA+",               headline: t(P.p7_headline), desc: t(P.p7_body), tags: ["AI", "Launch", "Digital"] },
+    { sig: "KP",  cat: "Advertising",   client: "KP Management",        headline: t(P.p8_headline), desc: t(P.p8_body), tags: ["Strategia", "Comunicazione", "B2B"] },
+    { sig: "AE",  cat: "Advertising",   client: "Accademia Europea",    headline: t(P.p9_headline), desc: t(P.p9_body), tags: ["Meta Ads", "Social Media", "Lead Gen"] },
+    { sig: "IC",  cat: "Brand Identity",client: "Istituto Campanella",  headline: t(P.p10_headline), desc: t(P.p10_body), tags: ["Brand Identity", "Merchandising", "Design"] },
+    { sig: "Go",  cat: "Brand Identity",client: "Golosi",               headline: t(P.p11_headline), desc: t(P.p11_body), tags: ["Brand Identity", "Food & Retail", "Design"] },
+    { sig: "BF",  cat: "Brand Identity",client: "Barber Feb",           headline: t(P.p12_headline), desc: t(P.p12_body), tags: ["Brand Identity", "Branding", "Local"] },
   ];
 
   const statsStrip = [
