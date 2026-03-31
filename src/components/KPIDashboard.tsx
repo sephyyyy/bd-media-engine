@@ -5,6 +5,8 @@ const MAGENTA = "#FF00CC";
 const START_DATE = "2025-09-20";
 const ROAS_VAL = 39.33;
 const CTR_VAL = 2.46;
+const CPC_VAL = 0.06;
+const CPM_VAL = 5.17;
 
 // Valori base cumulativi alla data di partenza
 const BASE_SPEND = 9_840;
@@ -215,17 +217,17 @@ const KPIDashboard = () => {
   const impRef = useRef<HTMLCanvasElement>(null);
   const roasRef = useRef<HTMLCanvasElement>(null);
   const ctrRef = useRef<HTMLCanvasElement>(null);
+  const cpcRef = useRef<HTMLCanvasElement>(null);
+  const cpmRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const days = daysSince(START_DATE);
 
-    // Costruisce le metriche con algo irregolare
     const spend = buildMetric(BASE_SPEND, 125, 300, days, 1);
     const rev = buildMetric(BASE_REVENUE, 750, 2000, days, 2);
     const clicks = buildMetric(BASE_CLICKS, 180, 520, days, 3);
     const imp = buildMetric(BASE_IMP, 4_200, 11_500, days, 4);
 
-    // Counter animati
     const pairs: [string, number, number, string, string][] = [
       ["kpi-spend", spend.total, 0, "€ ", ""],
       ["kpi-revenue", rev.total, 0, "€ ", ""],
@@ -233,13 +235,14 @@ const KPIDashboard = () => {
       ["kpi-imp", imp.total, 0, "", ""],
       ["kpi-roas", ROAS_VAL, 2, "", "x"],
       ["kpi-ctr", CTR_VAL, 2, "", "%"],
+      ["kpi-cpc", CPC_VAL, 2, "€", ""],
+      ["kpi-cpm", CPM_VAL, 2, "€", ""],
     ];
     pairs.forEach(([id, target, dec, pre, suf]) => {
       const el = document.getElementById(id);
       if (el) countUpEl(el, target, 2200, dec, pre, suf);
     });
 
-    // Delta subtexts — mostra incremento giorno corrente (irregolare)
     const todaySpend = Math.round(125 + seededRand(days * 3) * 175);
     const todayRev = Math.round(750 + seededRand(days * 3 + 1) * 1250);
     const setTxt = (id: string, t: string) => {
@@ -251,7 +254,6 @@ const KPIDashboard = () => {
     setTxt("delta-clicks", `▲ CTR ${CTR_VAL.toFixed(2)}% · dati reali`);
     setTxt("delta-imp", `▲ +${Math.round(4200 + seededRand(days * 3 + 2) * 7300).toLocaleString("it-IT")} oggi`);
 
-    // Sparklines — dopo 350ms per avere larghezza canvas disponibile
     setTimeout(() => {
       if (spendRef.current) drawSparkline(spendRef.current, spend.hist);
       if (revRef.current) drawSparkline(revRef.current, rev.hist);
@@ -259,14 +261,14 @@ const KPIDashboard = () => {
       if (impRef.current) drawSparkline(impRef.current, imp.hist);
     }, 350);
 
-    // Gauge — ROAS max 50, CTR max 5
     setTimeout(() => {
       if (roasRef.current) drawGauge(roasRef.current, ROAS_VAL, 50);
       if (ctrRef.current) drawGauge(ctrRef.current, CTR_VAL, 5);
+      if (cpmRef.current) drawGauge(cpmRef.current, CPM_VAL, 20);
+      if (cpcRef.current) drawGauge(cpcRef.current, CPC_VAL, 1);
     }, 450);
   }, []);
 
-  // Classe condivisa card
   const card = "relative overflow-hidden rounded-xl border border-white/[0.06] bg-card p-5";
   const label = "text-[9px] font-semibold uppercase tracking-[0.22em] text-muted-foreground";
   const delta = "mt-1 text-[10px] font-mono text-primary";
@@ -274,10 +276,8 @@ const KPIDashboard = () => {
   return (
     <div className="mt-10 space-y-4">
 
-      {/* Row 1: Spend | Revenue | Gauges */}
+      {/* Row 1: Spend | Revenue | ROAS + CTR */}
       <div className="grid gap-4 lg:grid-cols-3">
-
-        {/* Spend */}
         <div className={card}>
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
           <p className={label}>Spend</p>
@@ -285,8 +285,6 @@ const KPIDashboard = () => {
           <p className={delta} id="delta-spend">▲ caricamento...</p>
           <canvas ref={spendRef} className="mt-3 block w-full" height={64} />
         </div>
-
-        {/* Revenue */}
         <div className={card}>
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
           <p className={label}>Revenue</p>
@@ -294,11 +292,7 @@ const KPIDashboard = () => {
           <p className={delta} id="delta-revenue">▲ caricamento...</p>
           <canvas ref={revRef} className="mt-3 block w-full" height={64} />
         </div>
-
-        {/* Gauges: ROAS + CTR */}
         <div className="grid grid-cols-2 gap-4">
-
-          {/* ROAS */}
           <div className={`${card} flex flex-col items-center pt-4`}>
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
             <p className={label}>ROAS</p>
@@ -311,8 +305,6 @@ const KPIDashboard = () => {
               <span className="text-xs font-bold">{ROAS_VAL.toFixed(2)}</span>
             </div>
           </div>
-
-          {/* CTR */}
           <div className={`${card} flex flex-col items-center pt-4`}>
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
             <p className={label}>CTR</p>
@@ -328,10 +320,8 @@ const KPIDashboard = () => {
         </div>
       </div>
 
-      {/* Row 2: Clicks | Impressions */}
-      <div className="grid gap-4 md:grid-cols-2">
-
-        {/* Clicks — per esteso */}
+      {/* Row 2: Clicks | Impressions | CPM + CPC */}
+      <div className="grid gap-4 lg:grid-cols-3">
         <div className={card}>
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
           <p className={label}>Clicks</p>
@@ -339,14 +329,38 @@ const KPIDashboard = () => {
           <p className={delta} id="delta-clicks">▲ caricamento...</p>
           <canvas ref={clicksRef} className="mt-3 block w-full" height={64} />
         </div>
-
-        {/* Impressions — per esteso */}
         <div className={card}>
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
           <p className={label}>Impressions</p>
           <p className="mt-1 text-2xl font-extrabold tracking-tight" id="kpi-imp">0</p>
           <p className={delta} id="delta-imp">▲ caricamento...</p>
           <canvas ref={impRef} className="mt-3 block w-full" height={64} />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className={`${card} flex flex-col items-center pt-4`}>
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+            <p className={label}>CPM</p>
+            <canvas ref={cpmRef} width={130} height={76} className="mt-2" />
+            <p className="mt-1 text-lg font-extrabold" id="kpi-cpm">€0</p>
+            <p className="mt-0.5 text-center text-[9px] text-muted-foreground font-mono">cost per mille</p>
+            <div className="mt-3 flex w-full items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+              <div className="flex-1 border-t border-dashed border-primary/30" />
+              <span className="text-xs font-bold">€{CPM_VAL.toFixed(2)}</span>
+            </div>
+          </div>
+          <div className={`${card} flex flex-col items-center pt-4`}>
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+            <p className={label}>CPC</p>
+            <canvas ref={cpcRef} width={130} height={76} className="mt-2" />
+            <p className="mt-1 text-lg font-extrabold" id="kpi-cpc">€0</p>
+            <p className="mt-0.5 text-center text-[9px] text-muted-foreground font-mono">cost per click</p>
+            <div className="mt-3 flex w-full items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+              <div className="flex-1 border-t border-dashed border-primary/30" />
+              <span className="text-xs font-bold">€{CPC_VAL.toFixed(2)}</span>
+            </div>
+          </div>
         </div>
       </div>
 
