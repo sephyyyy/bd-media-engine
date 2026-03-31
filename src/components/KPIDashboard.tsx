@@ -280,7 +280,7 @@ const KPIDashboard = () => {
       <div className="grid gap-4 lg:grid-cols-3">
         <div className={card}>
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-          <p className={label}>Spend</p>
+          <p className={label}>Ads Spend</p>
           <p className="mt-1 text-2xl font-extrabold tracking-tight" id="kpi-spend">€ 0</p>
           <p className={delta} id="delta-spend">▲ caricamento...</p>
           <canvas ref={spendRef} className="mt-3 block w-full" height={64} />
