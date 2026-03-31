@@ -11,10 +11,10 @@ const About = () => {
   const A = translations.about;
 
   const team = [
-    { initials: "BD", name: t(A.team.m1_name), role: t(A.team.m1_role) },
-    { initials: "FS", name: t(A.team.m2_name), role: t(A.team.m2_role) },
-    { initials: "LF", name: t(A.team.m3_name), role: t(A.team.m3_role) },
-    { initials: "DA", name: t(A.team.m4_name), role: t(A.team.m4_role) },
+    { photo: "/tiubbi.png",  name: t(A.team.m1_name), role: t(A.team.m1_role) },
+    { photo: "/schili.png",  name: t(A.team.m2_name), role: t(A.team.m2_role) },
+    { photo: "/lucky_.png",  name: t(A.team.m3_name), role: t(A.team.m3_role) },
+    { photo: "/donny.png",   name: t(A.team.m4_name), role: t(A.team.m4_role) },
   ];
 
   const values = [
@@ -63,13 +63,24 @@ const About = () => {
           <ScrollReveal>
             <h2 className="text-3xl font-extrabold tracking-tight">{t(A.team.title)}</h2>
           </ScrollReveal>
-          <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-5 md:grid-cols-4">
             {team.map((m, i) => (
               <ScrollReveal key={i} delay={i * 80}>
-                <div className="card-surface text-center">
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-lg font-bold text-primary">{m.initials}</div>
-                  <h3 className="mt-4 text-sm font-bold">{m.name}</h3>
-                  <p className="mt-1 text-xs text-muted-foreground">{m.role}</p>
+                <div className="overflow-hidden rounded-xl border border-white/[0.06] bg-card transition-colors hover:border-primary/30">
+                  {/* Foto */}
+                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: "3/4" }}>
+                    <img
+                      src={m.photo}
+                      alt={m.name}
+                      className="h-full w-full object-cover object-top"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/70 to-transparent" />
+                  </div>
+                  {/* Nome e ruolo */}
+                  <div className="px-4 py-4 text-center">
+                    <h3 className="text-sm font-bold leading-tight">{m.name}</h3>
+                    <p className="mt-1 text-xs text-primary">{m.role}</p>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
