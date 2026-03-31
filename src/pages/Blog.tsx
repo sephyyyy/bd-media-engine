@@ -44,12 +44,12 @@ const Blog = () => {
       <section className="section-padding pt-32">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal>
-            <div className="eyebrow mb-4 flex items-center gap-3"><span className="h-px w-8 bg-primary" />{t(B.hero.eyebrow)}</div>
-            <h1 className="heading-hero max-w-4xl">{t(B.hero.h1)}. <span className="text-primary">{t(B.hero.subtitle)}</span></h1>
-            <p className="mt-4 max-w-2xl text-base text-muted-foreground">{t(B.hero.body)}</p>
+            <div className="eyebrow mb-4 flex items-center gap-3 px-[33px]"><span className="h-px w-8 bg-primary" />{t(B.hero.eyebrow)}</div>
+            <h1 className="heading-hero max-w-4xl mx-0 my-0 px-[29px]">{t(B.hero.h1)}. <span className="text-primary">{t(B.hero.subtitle)}</span></h1>
+            <p className="mt-4 max-w-2xl text-base text-muted-foreground px-[29px]">{t(B.hero.body)}</p>
           </ScrollReveal>
           <ScrollReveal delay={100}>
-            <div className="mt-8 flex flex-wrap gap-6 text-sm">
+            <div className="mt-8 flex flex-wrap gap-6 text-sm px-[29px]">
               <span><strong className="text-foreground">{t(B.hero.stat1_value)}</strong> <span className="text-muted-foreground">{t(B.hero.stat1_label)}</span></span>
               <span><strong className="text-foreground">{t(B.hero.stat2_value)}</strong> <span className="text-muted-foreground">{t(B.hero.stat2_label)}</span></span>
               <span><strong className="text-foreground">{t(B.hero.stat3_value)}</strong> <span className="text-muted-foreground">{t(B.hero.stat3_label)}</span></span>
