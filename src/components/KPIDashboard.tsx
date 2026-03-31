@@ -5,6 +5,8 @@ const MAGENTA = "#FF00CC";
 const START_DATE = "2025-09-20";
 const ROAS_VAL = 39.33;
 const CTR_VAL = 2.46;
+const CPC_VAL = 0.06;
+const CPM_VAL = 5.17;
 
 // Valori base cumulativi alla data di partenza
 const BASE_SPEND = 9_840;
