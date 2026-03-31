@@ -20,7 +20,7 @@ const Footer = () => {
             </Link>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 text-center text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-6 text-center text-sm text-muted-foreground md:absolute md:left-1/2 md:-translate-x-1/2">
             <Link to="/privacy" className="transition-colors hover:text-foreground">{t(T.privacy)}</Link>
             <Link to="/termini" className="transition-colors hover:text-foreground">{t(T.termini)}</Link>
             <Link to="/rimborsi" className="transition-colors hover:text-foreground">Rimborsi</Link>
