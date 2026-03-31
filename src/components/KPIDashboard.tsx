@@ -298,7 +298,7 @@ const KPIDashboard = () => {
             <p className={label}>ROAS</p>
             <canvas ref={roasRef} width={130} height={76} className="mt-2" />
             <p className="mt-1 text-lg font-extrabold" id="kpi-roas">0x</p>
-            <p className="mt-0.5 text-center text-[9px] text-muted-foreground font-mono">return on return on total spend</p>
+            <p className="mt-0.5 text-center text-[9px] text-muted-foreground font-mono">return on total spend</p>
             <div className="mt-3 flex w-full items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
               <div className="flex-1 border-t border-dashed border-primary/30" />
