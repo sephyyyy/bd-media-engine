@@ -1,5 +1,6 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import MarqueeStrip from "@/components/MarqueeStrip";
+import KPIDashboard from "@/components/KPIDashboard";
 import { useContactModal } from "@/components/ContactModalContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/i18n/translations";
@@ -8,12 +9,6 @@ const Index = () => {
   const { open: openContactModal } = useContactModal();
   const { t } = useLanguage();
   const H = translations.home;
-
-  const stats = [
-    { value: t(H.stats.stat1_value), label: t(H.stats.stat1_label) },
-    { value: t(H.stats.stat3_value), label: t(H.stats.stat3_label) },
-    { value: t(H.stats.stat2_value), label: t(H.stats.stat2_label) },
-  ];
 
   const steps = [
     { num: "01", title: t(H.method.step1_title), desc: t(H.method.step1_body) },
@@ -67,23 +62,16 @@ const Index = () => {
 
       <MarqueeStrip />
 
-      {/* Stats */}
+      {/* Stats / KPI Dashboard */}
       <section className="section-padding">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal>
             <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">{t(H.stats.title)}</h2>
             <p className="mt-2 text-muted-foreground">{t(H.stats.subtitle)}</p>
           </ScrollReveal>
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {stats.map((s, i) => (
-              <ScrollReveal key={i} delay={i * 100}>
-                <div className="card-surface flex h-full flex-col justify-between">
-                  <div className="text-6xl font-extrabold tracking-tight md:text-7xl">{s.value}</div>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.label}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ScrollReveal delay={150}>
+            <KPIDashboard />
+          </ScrollReveal>
         </div>
       </section>
 
