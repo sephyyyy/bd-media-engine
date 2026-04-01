@@ -170,6 +170,38 @@ const Index = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Contacts */}
+      <section className="section-padding bg-surface-1">
+        <div className="mx-auto max-w-7xl">
+          <ScrollReveal>
+            <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">{t((H as any).contacts.title)}</h2>
+            <p className="mt-2 text-muted-foreground">{t((H as any).contacts.subtitle)}</p>
+          </ScrollReveal>
+          <ScrollReveal delay={150}>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              <a href="mailto:bdmedia.main@gmail.com" className="card-surface flex items-center gap-4 transition-colors hover:border-primary/30">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/[0.06] text-primary">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">{t((H as any).contacts.email_label)}</p>
+                  <p className="text-sm font-semibold">bdmedia.main@gmail.com</p>
+                </div>
+              </a>
+              <a href="tel:+393382862017" className="card-surface flex items-center gap-4 transition-colors hover:border-primary/30">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/[0.06] text-primary">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">{t((H as any).contacts.phone_label)}</p>
+                  <p className="text-sm font-semibold">+39 338 286 2017</p>
+                </div>
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
     </div>
   );
 };
