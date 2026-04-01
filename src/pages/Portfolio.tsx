@@ -28,6 +28,9 @@ const Portfolio = () => {
     { sig: "TI+", cat: "digital",       client: "TecIA+",               headline: t(P.p7_headline), desc: t(P.p7_body), tags: ["AI", "Launch", "Digital"] },
     { sig: "KP",  cat: "digital",       client: "KP Management",        headline: t(P.p8_headline), desc: t(P.p8_body), tags: ["Strategia", "Comunicazione", "B2B"] },
     { sig: "AE",  cat: "digital",       client: "Accademia Europea",    headline: t(P.p9_headline), desc: t(P.p9_body), tags: ["Meta Ads", "Social Media", "Lead Gen"] },
+    { sig: "IC",  cat: "brand",         client: "Istituto Campanella",  headline: t(P.p10_headline), desc: t(P.p10_body), tags: ["Brand Identity", "Merchandising"] },
+    { sig: "Go",  cat: "brand",         client: "Golosi",               headline: t(P.p11_headline), desc: t(P.p11_body), tags: ["Brand Identity", "Food Import"] },
+    { sig: "BF",  cat: "brand",         client: "Barber Feb",           headline: t(P.p12_headline), desc: t(P.p12_body), tags: ["Brand Identity", "Barber"] },
   ];
 
   const statsStrip = [
