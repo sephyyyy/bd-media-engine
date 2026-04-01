@@ -37,7 +37,7 @@ const ContactModal = () => {
     const form = e.currentTarget;
     const data = new FormData(form);
     try {
-      const res = await fetch("https://formspree.io/f/meepzgnl", {
+      const res = await fetch("https://formspree.io/f/xykbpjze", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
