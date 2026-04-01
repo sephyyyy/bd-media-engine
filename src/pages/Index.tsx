@@ -152,28 +152,11 @@ const Index = () => {
           <ScrollReveal>
             <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">{t(H.testimonials.title)}</h2>
           </ScrollReveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {[
-              { key: "t1", initials: "SR" },
-              { key: "t2", initials: "LC" },
-              { key: "t3", initials: "RM" },
-              { key: "t4", initials: "TL" },
-              { key: "t5", initials: "VC" },
-            ].map((item, i) => (
-              <ScrollReveal key={item.key} delay={i * 80}>
-                <div className="card-surface flex h-full flex-col">
-                  <p className="flex-1 text-sm leading-relaxed text-muted-foreground">"{t((H.testimonials as any)[`${item.key}_text`])}"</p>
-                  <div className="mt-6 flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">{item.initials}</div>
-                    <div>
-                      <div className="text-sm font-semibold">{t((H.testimonials as any)[`${item.key}_name`])}</div>
-                      <div className="text-xs text-muted-foreground">{t((H.testimonials as any)[`${item.key}_role`])}</div>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ScrollReveal delay={150}>
+            <div className="mt-12">
+              <TestimonialCarousel />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
