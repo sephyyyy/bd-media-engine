@@ -99,6 +99,12 @@ export const translations = {
       headline: { it: "Pronto a costruire il tuo sistema di acquisizione?", en: "Ready to build your acquisition system?" },
       button:   { it: "Ottieni l'analisi gratuita →", en: "Get the free analysis →" },
     },
+    contacts: {
+      title:    { it: "Contatti", en: "Contacts" },
+      subtitle: { it: "Scrivici o chiamaci, siamo sempre disponibili.", en: "Write to us or call us, we're always available." },
+      email_label: { it: "Email", en: "Email" },
+      phone_label: { it: "Telefono", en: "Phone" },
+    },
   },
 
   // ─── SERVICES PAGE ────────────────────────────────────────────────────────
