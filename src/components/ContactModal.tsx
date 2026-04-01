@@ -32,7 +32,25 @@ const ContactModal = () => {
     setTimeout(() => { close(); setSubmitted(false); setAnimating(false); }, 150);
   };
 
-  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    try {
+      const res = await fetch("https://formspree.io/f/mpqoldjn", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        alert("Errore nell'invio. Riprova.");
+      }
+    } catch {
+      alert("Errore di rete. Controlla la connessione.");
+    }
+  };
 
   if (!isOpen && !animating) return null;
 
@@ -96,27 +114,27 @@ const ContactModal = () => {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
                     <label className={labelClass}>{t(T.label_nome)}</label>
-                    <input type="text" required placeholder={t(T.placeholder_nome)} className={inputClass} />
+                    <input type="text" name="nome" required placeholder={t(T.placeholder_nome)} className={inputClass} />
                   </div>
                   <div>
                     <label className={labelClass}>{t(T.label_cognome)}</label>
-                    <input type="text" required placeholder={t(T.placeholder_cognome)} className={inputClass} />
+                    <input type="text" name="cognome" required placeholder={t(T.placeholder_cognome)} className={inputClass} />
                   </div>
                 </div>
 
                 <div>
                   <label className={labelClass}>{t(T.label_telefono)}</label>
-                  <input type="tel" required placeholder={t(T.placeholder_telefono)} className={inputClass} />
+                  <input type="tel" name="telefono" required placeholder={t(T.placeholder_telefono)} className={inputClass} />
                 </div>
 
                 <div>
                   <label className={labelClass}>{t(T.label_email)}</label>
-                  <input type="email" required placeholder={t(T.placeholder_email)} className={inputClass} />
+                  <input type="email" name="email" required placeholder={t(T.placeholder_email)} className={inputClass} />
                 </div>
 
                 <div>
                   <label className={labelClass}>{t(T.label_topic)}</label>
-                  <select required defaultValue="" className={`${inputClass} appearance-none`}
+                  <select name="argomento" required defaultValue="" className={`${inputClass} appearance-none`}
                     style={{
                       backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 5L6 8L9 5' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
                       backgroundRepeat: "no-repeat",
